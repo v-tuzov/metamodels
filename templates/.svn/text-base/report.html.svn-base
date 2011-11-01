@@ -1,0 +1,26 @@
+{% extends 'base_f.html' %}
+
+{% block content %}
+           <div style="text-align:center; font-family: Tahoma;">
+              <h1 class="hdr1" style="color:red; font-size:17px;">{{fio}}</h1>
+               <br />
+                <table style="border:solid 3px; font-size:15px; margin:0 auto;">
+                    <tr style="border-bottom: solid 3px">
+                        <th style="width:50px"># </th>
+                        <th style="width:100px">Дата </th>
+                        <th style="width:300px">Отработано времени чч.мм.сс </th>
+                        <th style="width:550px">Название задачи </th>
+                        
+                    </tr>
+                    {% for task in tasks %}
+                    
+                    <tr style="border-bottom: solid 1px">
+                        <td> <b>{{forloop.counter}}.</b></td>
+                        <td> {{task.day}}</td>
+                        <td> {{task.time}}</td>
+                        <td> {{task.task_name}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+{% endblock %}       

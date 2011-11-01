@@ -1,0 +1,62 @@
+{% extends 'base_f.html' %}
+
+{% block content %}
+           <div style="text-align:center; font-family: Tahoma;">
+              <h1 class="hdr1" style="color:red; font-size:17px;">Загрузка файла с описанием модели</h1>
+               <br />
+
+                <form name='ava_form' id='ava_form'  enctype='multipart/form-data'  action='.' method='post'>
+                    {{form.file}}
+                    <div style="color:red">
+                        {{ form.file.errors }}
+                    </div>
+                    <br />
+                    <br />
+                    <input type="submit" name="sbm" value="отправить">
+                </form>
+                {% if syntax_error %}
+                    {{ syntax_error }}
+                {% else %}
+                    {% if created %}
+                        Созданные модели доступны для <a style="font-weight:bold;" href="/admin/">редактирования</a>
+                        <br />
+                        <br />
+                        <br />
+                    {% endif %}
+                {% endif %}
+                
+                
+                
+                <div>
+                   Описание моделей передаётся в виде файла в формате json.
+                   <br />
+                   Пример содержимого файла:
+                   <pre>
+                       [{"tbl_name": "mt1", 
+                         "title": "Мама мыла раму", 
+					     "fields": [{"id": "name", 
+                                     "title": "Имя", 
+                                     "type": "char"},     
+ 
+                                    {"id": "paycheck", 
+                                     "title": "Зарплата", 
+                                     "type": "int"}] 
+                        },
+
+                        {"tbl_name": "ytu44", 
+                         "title": "Мама мыла раму2", 
+                         "fields": [{"id": "last_name", 
+                                     "title": "Фамилия", 
+                                     "type": "char"},     
+                                   {"id": "age", 
+                                    "title": "Возраст", 
+                                    "type": "int"}] 
+                        }
+                      ]
+                   </pre>
+                </div>
+                
+                
+                
+            </div>
+{% endblock %}       
